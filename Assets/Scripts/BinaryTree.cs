@@ -43,6 +43,7 @@ public class BinaryTree : MonoBehaviour {
 				Debug.Log("Ja tem um numero");
 				ok = false;
 				changedHeight = false;
+				TreeBreak(root);
 			}else{
 				height++;
 				if(root.info>x){//x menor que root.info
