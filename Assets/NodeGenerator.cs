@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class NodeGenerator : MonoBehaviour {
 	public BinaryTree primaryNode;
 	public int numberOfNodes;
-	public GameObject prefabNode,menu;
+	public GameObject prefabNode,menu,redline,gameover;
 	public RectTransform pos;
+	public int currentLvl = 0;
 
 	public Queue fila = new Queue();
 
@@ -16,11 +17,17 @@ public class NodeGenerator : MonoBehaviour {
 	private float initialTime;
 
 	public void StartRound(int level){
+		currentLvl = level;
+		Time.timeScale = 1.0f;
 		if (menu.activeSelf)
 			menu.SetActive (false);
+		if (gameover.activeSelf)
+			gameover.SetActive (false);
+		if (!redline.activeSelf)
+			redline.SetActive (true);
 		GeneratePrimary ();
 		fila.ClearQueue ();
-		speed = Mathf.Log((int)Mathf.Pow((float)level,2)+1);
+		speed = Mathf.Log((int)Mathf.Pow((float)level,2)+1)+.5f;
 		initialTime = Time.time;
 		count = 0;
 		Debug.Log (speed);
@@ -53,9 +60,10 @@ public class NodeGenerator : MonoBehaviour {
 	}
 
 	public void GeneratePrimary(){
-		int number = Random.Range ((int)50, (int)150);
-		primaryNode.localRoot.info = number;
-		primaryNode.localRoot.GetComponentInChildren<Text> ().text = number.ToString ();
+		int number = Random.Range ((int)80, (int)120);
+		primaryNode.localRoot.SetInfo (number);
+
+		primaryNode.localRoot.SetBal (0, 1);
 	}
 
 }

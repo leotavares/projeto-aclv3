@@ -7,6 +7,7 @@ public class Node : MonoBehaviour {
 	public int bal;
 	public float info;
 	public RectTransform brn;
+	public Text infoTxt;
 
 	public Node(){}
 
@@ -14,9 +15,9 @@ public class Node : MonoBehaviour {
 		SetInfo (info);
 	}
 
-	public void SetInfo(float info){
-		this.info = info;
-		this.GetComponentInChildren<Text> ().text = info.ToString ();
+	public void SetInfo(float i){
+		this.info = i;
+		infoTxt.text = i.ToString ();
 	}
 
 	public void SetBal(int b, int height){

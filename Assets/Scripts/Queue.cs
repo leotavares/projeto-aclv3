@@ -40,8 +40,19 @@ public class Queue{
 	}
 
 	public void ClearQueue(){
-		while (first!=null) {
-			first = first.anterior;
+		GameObject[] nodes = GameObject.FindGameObjectsWithTag("Node");
+		int number = nodes.Length;
+
+		for(int i = 0; i < number; i++){
+			Object.Destroy(nodes[i]);
 		}
+
+		GameObject[] generatedNodes = GameObject.FindGameObjectsWithTag("Generated Node");
+		int n = generatedNodes.Length;
+		
+		for(int i = 0; i < n; i++){
+			Object.Destroy(generatedNodes[i]);
+		}
+
 	}
 }

@@ -25,6 +25,9 @@ public class GeneratedNode : MonoBehaviour {
 
 	public void AddToTree(){
 		GameObject.Find("Primary Node").GetComponent<BinaryTree>().InsertValue ((int)info);
+		Debug.Log(GameObject.FindGameObjectsWithTag("Node").Length);
+		if (GameObject.FindGameObjectsWithTag ("Node").Length > 7 && !nodeG.primaryNode.gameOver.activeSelf)
+			nodeG.StartRound (nodeG.currentLvl + 1);
 		RemoveSelf ();
 	}
 
